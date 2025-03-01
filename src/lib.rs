@@ -17,8 +17,8 @@ use std::io::{stdout, Write};
 /// please title>foo 👈foo is user's input.
 /// // input == "foo"
 /// ```
-pub fn get_input(message: &str) -> String {
-    print!("{}>", message);
+pub fn get_input<S: AsRef<str>>(message: S) -> String {
+    print!("{}>", message.as_ref());
     stdout().flush().unwrap();
     let mut word = String::new();
     std::io::stdin()
@@ -32,7 +32,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn it_works() {
+    fn input_test() {
         assert_eq!(get_input("hello?>"), "hoge".to_string());
     }
 }
