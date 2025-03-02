@@ -29,7 +29,8 @@ pub fn get_input<S: AsRef<str>>(message: S) -> String {
 
 /// if user's input is "y" or "yes", return true.
 pub fn yes_no<S: AsRef<str>>(message: S) -> bool {
-    matches!(get_input(message.as_ref()).as_str(), "y" | "yes")
+    let input = get_input(message.as_ref());
+    input.is_empty() || matches!(input.as_ref(), "y" | "yes")
 }
 
 #[cfg(test)]
@@ -39,5 +40,10 @@ mod tests {
     #[test]
     fn input_test() {
         assert_eq!(get_input("hello?>"), "hoge".to_string());
+    }
+
+    #[test]
+    fn yes_no_test() {
+        println!("{}", yes_no("message"));
     }
 }
