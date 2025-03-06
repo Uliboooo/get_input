@@ -18,7 +18,7 @@ use std::io::{stdout, Write};
 /// // input == "foo"
 /// ```
 pub fn get_input<S: AsRef<str>>(message: S) -> String {
-    print!("{}>", message.as_ref());
+    print!("{}", message.as_ref());
     stdout().flush().unwrap();
     let mut word = String::new();
     std::io::stdin()

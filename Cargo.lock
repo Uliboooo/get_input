@@ -4,4 +4,4 @@ version = 4
 
 [[package]]
 name = "get_input"
-version = "0.5.0"
+version = "0.5.1"
